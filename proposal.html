@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Be My Valentine 💘</title>
-
   <link rel="stylesheet" href="style.css">
 
   <!-- Flower confetti -->
@@ -23,87 +22,66 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
-
-    /* ✅ FIXED BUTTON ROW */
-    .buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .buttons button, .buttons form {
-      flex: 1;
-      display: flex;
-    }
-
-    .buttons form button {
-      flex: 1;
-    }
   </style>
 </head>
-
 <body>
-
   <div class="container">
     <h1>I was wondering if you would love to be my Valentine? 💕</h1>
-
     <img src="images/flower flork.jpg" alt="Valentine image">
 
     <div class="buttons">
       <!-- YES FORM -->
       <form id="yesForm" action="https://formspree.io/f/xkozqoby" method="POST">
-        <button type="submit">YES 💖</button>
+        <button type="submit" class="proposal-btn yes-btn">YES 💖</button>
         <input type="hidden" name="answer" value="YES 💖">
       </form>
 
       <!-- NO BUTTON -->
-      <button id="no">NO 🙈</button>
+      <button id="no" class="proposal-btn no-btn">NO 🙈</button>
     </div>
   </div>
 
   <script>
     /* 🌸 FLOWER CONFETTI */
-    const flowers = ["🌸", "🌺", "🌷", "💮", "🌼"];
+    const flowers = ["🌸","🌺","🌷","💮","🌼"];
     setInterval(() => {
       const flower = document.createElement("div");
       flower.className = "flower";
-      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-      flower.style.left = Math.random() * 100 + "vw";
-      flower.style.fontSize = Math.random() * 10 + 18 + "px";
+      flower.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
+      flower.style.left = Math.random()*100 + "vw";
+      flower.style.fontSize = Math.random()*10 + 18 + "px";
       document.body.appendChild(flower);
-      setTimeout(() => flower.remove(), 6000);
-    }, 500);
+      setTimeout(()=>flower.remove(),6000);
+    },500);
 
     /* 🙈 NO BUTTON DODGE */
     const noBtn = document.getElementById("no");
     noBtn.addEventListener("mouseover", moveButton);
     noBtn.addEventListener("touchstart", moveButton);
-    function moveButton() {
-      const x = Math.random() * 120 - 60;
-      const y = Math.random() * 60 - 30;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    function moveButton(){
+      const x = Math.random()*120 - 60;
+      const y = Math.random()*60 - 30;
+      noBtn.style.transform = `translate(${x}px,${y}px)`;
       noBtn.style.transition = "transform 0.1s ease";
     }
 
     /* 💖 YES FORM SUBMIT + REDIRECT */
     const yesForm = document.getElementById("yesForm");
-    yesForm.addEventListener("submit", function(e) {
-      e.preventDefault(); // prevent default form submission
+    yesForm.addEventListener("submit", function(e){
+      e.preventDefault();
       const formData = new FormData(yesForm);
 
-      fetch(yesForm.action, {
-        method: "POST",
+      fetch(yesForm.action,{
+        method:"POST",
         body: formData,
-        headers: { 'Accept': 'application/json' }
+        headers: {'Accept':'application/json'}
       }).then(response => {
-        // After successful submission, redirect to yes.html
         window.location.href = "yes.html";
       }).catch(error => {
-        // fallback if submission fails
         window.location.href = "yes.html";
       });
     });
   </script>
-
 </body>
 </html>
+
