@@ -1,95 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine 💘</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine 💘</title>
 
-    <!-- Main styles -->
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-    <!-- Flower confetti styles -->
-    <style>
-        .flower {
-            position: fixed;
-            top: -10vh;
-            font-size: 20px;
-            animation: fall 6s linear forwards;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.9;
-        }
+  <!-- Flower confetti styles -->
+  <style>
+    .flower {
+      position: fixed;
+      top: -10vh;
+      font-size: 20px;
+      animation: fall 6s linear forwards;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.9;
+    }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>I was wondering if you would love to be my Valentine? 💕</h1>
+  <div class="container">
+    <h1>I was wondering if you would love to be my Valentine? 💕</h1>
 
-        <img src="images/flower flork.jpg" alt="Valentine image">
+    <img src="images/flower flork.jpg" alt="Valentine image">
 
-        <div class="buttons">
-            <button onclick="sayYes()">YES 💖</button>
-            <button id="no">NO 🙈</button>
-        </div>
+    <div class="buttons">
+      <button onclick="sayYes()">YES 💖</button>
+      <button id="no">NO 🙈</button>
     </div>
+  </div>
 
-    <script>
-        /* 🌸 FLOWER CONFETTI */
-        const flowers = ["🌸", "🌺", "🌷", "💮", "🌼"];
+  <script>
+    /* 🌸 FLOWER CONFETTI */
+    const flowers = ["🌸", "🌺", "🌷", "💮", "🌼"];
 
-        setInterval(() => {
-            const flower = document.createElement("div");
-            flower.className = "flower";
-            flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+    setInterval(() => {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.fontSize = Math.random() * 10 + 18 + "px";
+      document.body.appendChild(flower);
 
-            flower.style.left = Math.random() * 100 + "vw";
-            flower.style.fontSize = Math.random() * 10 + 18 + "px";
+      setTimeout(() => flower.remove(), 6000);
+    }, 500);
 
-            document.body.appendChild(flower);
+    /* 🙈 NO BUTTON DODGE */
+    const noBtn = document.getElementById("no");
 
-            setTimeout(() => {
-                flower.remove();
-            }, 6000);
-        }, 500);
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("touchstart", moveButton);
 
-        /* 🙈 NO BUTTON DODGE */
-        const noBtn = document.getElementById("no");
+    function moveButton() {
+      const x = Math.random() * 80 - 40;
+      const y = Math.random() * 40 - 20;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
-        noBtn.addEventListener("mouseover", moveButton);
-        noBtn.addEventListener("touchstart", moveButton);
+    /* 💖 YES BUTTON */
+    function sayYes() {
+      window.location.href =
+        "mailto:k.khuthama@gmail.com?subject=She%20Said%20YES!%20💖&body=She%20clicked%20YES%20on%20the%20Valentine%20website%20🥹💘";
 
-        function moveButton() {
-            const x = Math.random() * 200 - 100;
-            const y = Math.random() * 80 - 40;
-            noBtn.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        /* 💖 YES BUTTON */
-        function sayYes() {
-            window.location.href =
-                "mailto:k.khuthama@gmail.com?subject=She%20Said%20YES!%20💖&body=She%20clicked%20YES%20on%20the%20Valentine%20website%20🥹💘";
-
-            setTimeout(() => {
-                window.location.href = "yes.html";
-            }, 400);
-        }
-    </script>
+      setTimeout(() => {
+        window.location.href = "yes.html";
+      }, 400);
+    }
+  </script>
 
 </body>
-
 </html>
