@@ -38,15 +38,6 @@ h1 {
   margin-bottom: 14px;
 }
 
-/* 💌 TEXT */
-p {
-  color: #555;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
 /* 🖼️ IMAGES */
 img {
   width: 100%;
@@ -57,40 +48,50 @@ img {
   margin: 20px 0;
 }
 
-/* 💘 BUTTONS (GENERAL) */
-button {
-  background: #ff4d6d;
-  color: white;
-  border: none;
-  padding: 16px;
-  border-radius: 32px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  letter-spacing: 0.4px;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-/* ✅ YES / NO BUTTON ROW */
+/* 💘 BUTTONS CONTAINER */
 .buttons {
   display: flex;
   gap: 12px;
   margin-top: 16px;
 }
 
-/* Both buttons equal width */
-.buttons button {
-  flex: 1;
+/* ✅ MAKE BOTH BUTTONS SAME SIZE */
+.buttons form, .buttons button {
+  flex: 1;                /* equal width */
+  display: flex;           /* inner flex for centering button text */
 }
 
-/* NO button style */
+.buttons form button, .buttons button {
+  flex: 1;
+  padding: 16px;
+  border-radius: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease;
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* YES BUTTON */
+.buttons form button {
+  background: #ff4d6d;
+  color: white;
+}
+
+/* NO BUTTON */
 #no {
   background: #ffd6e0;
   color: #ff4d6d;
+  position: relative;
+}
+
+/* BUTTON HOVER */
+.buttons button:hover, .buttons form button:hover {
+  transform: scale(1.05);
 }
 
 /* 💻 Larger screens */
@@ -108,3 +109,5 @@ button:hover {
     max-height: 300px;
   }
 }
+
+
