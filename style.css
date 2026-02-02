@@ -48,21 +48,36 @@ img {
   margin: 20px 0;
 }
 
-/* 💘 BUTTONS CONTAINER */
+/* 🔹 GLOBAL BUTTONS (index page etc) */
+button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Proposal page YES/NO buttons */
 .buttons {
   display: flex;
   gap: 12px;
   margin-top: 16px;
 }
 
-/* ✅ MAKE BOTH BUTTONS SAME SIZE */
-.buttons form, .buttons button {
-  flex: 1;                /* equal width */
-  display: flex;           /* inner flex for centering button text */
-}
-
-.buttons form button, .buttons button {
-  flex: 1;
+.proposal-btn {
+  flex: 1;                 
+  display: flex;           
+  justify-content: center;
+  align-items: center;
   padding: 16px;
   border-radius: 32px;
   font-size: 16px;
@@ -70,27 +85,20 @@ img {
   cursor: pointer;
   border: none;
   transition: transform 0.2s ease;
-  letter-spacing: 0.4px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* YES BUTTON */
-.buttons form button {
+.yes-btn {
   background: #ff4d6d;
   color: white;
 }
 
-/* NO BUTTON */
-#no {
+.no-btn {
   background: #ffd6e0;
   color: #ff4d6d;
   position: relative;
 }
 
-/* BUTTON HOVER */
-.buttons button:hover, .buttons form button:hover {
+.proposal-btn:hover {
   transform: scale(1.05);
 }
 
