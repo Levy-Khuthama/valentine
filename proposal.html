@@ -20,14 +20,24 @@
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ✅ FIXED BUTTON ROW */
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .buttons button, .buttons form {
+      flex: 1;
+      display: flex;
+    }
+
+    .buttons form button {
+      flex: 1;
     }
   </style>
 </head>
@@ -42,8 +52,8 @@
     <div class="buttons">
       <!-- YES FORM -->
       <form id="yesForm" action="https://formspree.io/f/xkozqoby" method="POST">
-        <input type="hidden" name="answer" value="YES 💖">
         <button type="submit">YES 💖</button>
+        <input type="hidden" name="answer" value="YES 💖">
       </form>
 
       <!-- NO BUTTON -->
