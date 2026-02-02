@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Flower confetti styles -->
+  <!-- Flower confetti -->
   <style>
     .flower {
       position: fixed;
@@ -40,7 +40,13 @@
     <img src="images/flower flork.jpg" alt="Valentine image">
 
     <div class="buttons">
-      <button onclick="sayYes()">YES 💖</button>
+      <!-- YES FORM -->
+      <form id="yesForm" action="https://formspree.io/f/xkozqoby" method="POST">
+        <input type="hidden" name="answer" value="YES 💖">
+        <button type="submit">YES 💖</button>
+      </form>
+
+      <!-- NO BUTTON -->
       <button id="no">NO 🙈</button>
     </div>
   </div>
@@ -48,7 +54,6 @@
   <script>
     /* 🌸 FLOWER CONFETTI */
     const flowers = ["🌸", "🌺", "🌷", "💮", "🌼"];
-
     setInterval(() => {
       const flower = document.createElement("div");
       flower.className = "flower";
@@ -56,34 +61,39 @@
       flower.style.left = Math.random() * 100 + "vw";
       flower.style.fontSize = Math.random() * 10 + 18 + "px";
       document.body.appendChild(flower);
-
       setTimeout(() => flower.remove(), 6000);
     }, 500);
 
     /* 🙈 NO BUTTON DODGE */
     const noBtn = document.getElementById("no");
-
     noBtn.addEventListener("mouseover", moveButton);
     noBtn.addEventListener("touchstart", moveButton);
-
     function moveButton() {
-            const x = Math.random() * 150 - 75; // ±75px horizontally
-            const y = Math.random() * 80 - 40;  // ±40px vertically
-            noBtn.style.transform = `translate(${x}px, ${y}px)`;
-            noBtn.style.transition = "transform 0.08s ease"; // faster animation
-        }
-
-    /* 💖 YES BUTTON */
-    function sayYes() {
-      window.location.href =
-        "mailto:k.khuthama@gmail.com?subject=She%20Said%20YES!%20💖&body=She%20clicked%20YES%20on%20the%20Valentine%20website%20🥹💘";
-
-      setTimeout(() => {
-        window.location.href = "yes.html";
-      }, 400);
+      const x = Math.random() * 120 - 60;
+      const y = Math.random() * 60 - 30;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      noBtn.style.transition = "transform 0.1s ease";
     }
+
+    /* 💖 YES FORM SUBMIT + REDIRECT */
+    const yesForm = document.getElementById("yesForm");
+    yesForm.addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent default form submission
+      const formData = new FormData(yesForm);
+
+      fetch(yesForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        // After successful submission, redirect to yes.html
+        window.location.href = "yes.html";
+      }).catch(error => {
+        // fallback if submission fails
+        window.location.href = "yes.html";
+      });
+    });
   </script>
 
 </body>
 </html>
-
