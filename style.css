@@ -48,7 +48,7 @@ img {
   margin: 20px 0;
 }
 
-/* 🔹 GLOBAL BUTTONS (index page etc) */
+/* 🔹 GLOBAL BUTTONS (index page, HEY button etc) */
 button {
   background: #ff4d6d;
   color: white;
@@ -66,7 +66,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* 🔹 Proposal page YES/NO buttons */
+/* 🔹 PROPOSAL PAGE YES/NO BUTTONS */
 .buttons {
   display: flex;
   gap: 12px;
@@ -74,8 +74,8 @@ button:hover {
 }
 
 .proposal-btn {
-  flex: 1;                 
-  display: flex;           
+  flex: 1;                 /* equal width */
+  display: flex;           /* center text */
   justify-content: center;
   align-items: center;
   padding: 16px;
