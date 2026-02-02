@@ -1,63 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Picnic Date 💕</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Picnic Date 💕</title>
+  <link rel="stylesheet" href="style.css">
 
-    <style>
-        body {
-            overflow: hidden;
-        }
+  <style>
+    body{overflow:hidden;}
 
-        .heart {
-            position: fixed;
-            font-size: 22px;
-            color: #ff4d6d;
-            animation: float 4s linear infinite;
-            pointer-events: none;
-        }
+    .heart{
+      position: fixed;
+      font-size: 22px;
+      color: #ff4d6d;
+      animation: float 4s linear infinite;
+      pointer-events: none;
+    }
 
-        @keyframes float {
-            from {
-                transform: translateY(100vh);
-                opacity: 1;
-            }
-
-            to {
-                transform: translateY(-10vh);
-                opacity: 0;
-            }
-        }
-    </style>
+    @keyframes float{
+      from{transform: translateY(100vh); opacity:1;}
+      to{transform: translateY(-10vh); opacity:0;}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <h1>PICNIC DATE 💕</h1>
+    <img src="images/flork poster.avif" alt="Picnic image">
+    <p><strong>Date:</strong> 14 February 2026</p>
+    <p><strong>Where:</strong> Johannesburg Botanical Garden</p>
+    <p><strong>Time:</strong> 13h30</p>
+  </div>
 
-    <div class="container">
-        <h1>PICNIC DATE 💕</h1>
-
-        <img src="images/flork poster.avif" alt="Picnic image">
-
-        <p><strong>Date:</strong> 14 February 2026</p>
-        <p><strong>Where:</strong> Johannesburg Botanical Garden</p>
-        <p><strong>Time:</strong> 13h30</p>
-    </div>
-
-    <script>
-        setInterval(() => {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "💖";
-            heart.style.left = Math.random() * 100 + "vw";
-            document.body.appendChild(heart);
-
-            setTimeout(() => heart.remove(), 4000);
-        }, 300);
-    </script>
-
+  <script>
+    setInterval(()=>{
+      const heart=document.createElement("div");
+      heart.className="heart";
+      heart.innerHTML="💖";
+      heart.style.left=Math.random()*100+"vw";
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),4000);
+    },300);
+  </script>
 </body>
-
 </html>
